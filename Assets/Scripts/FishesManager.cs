@@ -17,6 +17,9 @@ public class FishesManager : MonoBehaviour
     public int m_nb_follower_fishes_spawned = 10;
     [SerializeField]
     public int m_nb_leader_fishes_spawned = 3;
+        
+    [SerializeField]
+    public int m_nb_boids_spawned = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,9 @@ public class FishesManager : MonoBehaviour
         }
         for(int i = 0; i<m_nb_leader_fishes_spawned; i++){
            SpawnFish(typeof(LeaderFish));
+        }
+        for(int i = 0; i<m_nb_boids_spawned; i++){
+           SpawnFish(typeof(Boid));
         }
     }
     private void SpawnFish(System.Type fishType){

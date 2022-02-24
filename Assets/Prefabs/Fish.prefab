@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5024469960310598608}
-  - component: {fileID: 5024469960310598611}
   - component: {fileID: 5024469960310598637}
   - component: {fileID: 5024469960310598610}
+  - component: {fileID: 2310575428979216465}
   m_Layer: 0
-  m_Name: Boid
+  m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,29 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5024469960310598609}
-  m_LocalRotation: {x: -0.1727806, y: 0.33403218, z: 0.06242853, w: 0.9244848}
+  m_LocalRotation: {x: -0.1727791, y: 0.33402967, z: 0.062427495, w: 0.924486}
   m_LocalPosition: {x: -5.2778034, y: -2.809, z: -3.94}
-  m_LocalScale: {x: 0.48343, y: 0.48343, z: 0.48343}
+  m_LocalScale: {x: 0.1, y: 0.19, z: 0.34}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -21.172, y: 39.731, z: 0}
---- !u!114 &5024469960310598611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5024469960310598609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f90b95ff7fa2efa43af06397b8007c73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boidData:
-    m_name: Bibou
-    m_speed: 3
-    m_color: {r: 0.7075472, g: 0, b: 0, a: 1}
 --- !u!33 &5024469960310598637
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5024469960310598609}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 289301614986012343, guid: 5213a61323f8c7840a08115c661dd63b, type: 3}
 --- !u!23 &5024469960310598610
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: f3e6a28db95caf642b6ff14fb98b7957, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2310575428979216465
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5024469960310598609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.3614025
+  m_Height: 3.1932237
+  m_Direction: 2
+  m_Center: {x: -0.05783066, y: 1.3958151, z: -0.28126857}

@@ -15,6 +15,7 @@ public class AFish : MonoBehaviour
 
     virtual public void InitFish(float _boxRadius){
         boxRadius = _boxRadius;
+        boxCenter = Vector3.zero;
         fishData = new FishData();
         fishData.m_speed = Random.Range(2.5f,4f);
     }

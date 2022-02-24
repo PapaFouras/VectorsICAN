@@ -2,32 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowerFish : AFish
+public class Boid : AFish
 {
-    GameObject leaderFishToFollow;
+    List<Boid> nearbyBoids = new List<Boid>();
 
-    float xAngle = .8f * Mathf.PI;
-
-    float zAngle = 0.8f * 0.5f * Mathf.PI;
-
-    float precision = .1f*Mathf.PI;
-
-    float viewDistance = 7f;
+    public float xAngle = .8f * Mathf.PI;
 
 
+    public float zAngle = 0.5f * 0.5f * Mathf.PI;
 
-  protected override void FixedUpdate() {
+    public float precision = .1f*Mathf.PI;
+    public float viewDistance = 1f;
 
-      DetectLeaderFish();
-      if(leaderFishToFollow != null){
-          transform.forward = (leaderFishToFollow.transform.position - transform.position).normalized;
-      }
-
+  override protected void FixedUpdate() {
+      DetectNearbyBoids();
       base.FixedUpdate();
+  } 
 
-
-  }
-private void DetectLeaderFish(){
+  private void DetectNearbyBoids(){
+      nearbyBoids.Clear();
     // Bit shift the index of the layer (8) to get a bit mask
         int layerMask = 1 << 8;
 
@@ -36,6 +29,7 @@ private void DetectLeaderFish(){
         layerMask = ~layerMask;
         RaycastHit hit;
         //Does the ray intersect any objects excluding the player layer
+
         for(float i = -xAngle; i < xAngle; i+=precision){
             for(float j = -zAngle; j < zAngle; j+=precision){
                 float x =  Mathf.Sin(i);//Mathf.Sin(i);
@@ -43,24 +37,23 @@ private void DetectLeaderFish(){
                 float z = Mathf.Cos(i);//Mathf.Sin(i);
                 
                 Vector3 pos = transform.rotation * new Vector3(x,y,z);
-                //Debug.DrawRay(transform.position,  pos  * viewDistance, Color.white);
+                Debug.DrawRay(transform.position,  pos  * viewDistance, Color.white);
     
                 if (Physics.Raycast(transform.position, pos , out hit, viewDistance, layerMask))
                 {
-                    if(isLeaderFish(hit)){
+                    if(isBoidFish(hit)){
                         Debug.DrawRay(transform.position, pos * hit.distance, Color.yellow);
-                        return;
                     } 
                 }
             }
          }
-        leaderFishToFollow = null;
+        
         
 }
-private bool isLeaderFish(RaycastHit _hit){
+private bool isBoidFish(RaycastHit _hit){
     if(_hit.collider.gameObject.GetComponent<LeaderFish>() != null)
     {
-                leaderFishToFollow = _hit.collider.gameObject;
+                nearbyBoids.Add(_hit.collider.gameObject.GetComponent<Boid>());
                 Debug.Log("Did Hit");
                 return true;
     }
@@ -68,13 +61,6 @@ private bool isLeaderFish(RaycastHit _hit){
         return false;
     }
 }
-public override void InitFish(float _boxRadius)
-    {
-        base.InitFish(_boxRadius);
-        //fishData.m_speed = Random.Range(2f,3f);
-        fishData.m_speed = 4f;
-        Destroy(gameObject.GetComponent<CapsuleCollider>());
-
-    }
+      
   
 }
