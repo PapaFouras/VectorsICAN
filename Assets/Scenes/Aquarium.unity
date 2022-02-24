@@ -211,9 +211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishPrefab: {fileID: 5024469960310598609, guid: 45985cfe401407f4ba007b92d68a7ec9, type: 3}
   boxVolumeGO: {fileID: 1151056224}
-  boxRadius: 8.1
-  m_nb_follower_fishes_spawned: 72
-  m_nb_leader_fishes_spawned: 35
+  boxRadius: 11.71
+  m_nb_follower_fishes_spawned: 81
+  m_nb_leader_fishes_spawned: 17
+  m_nb_boids_spawned: 0
 --- !u!4 &758649192
 Transform:
   m_ObjectHideFlags: 0
@@ -269,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 1151056224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16.2, y: 16.2, z: 16.2}
+  m_LocalScale: {x: 23.42, y: 23.42, z: 23.42}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
